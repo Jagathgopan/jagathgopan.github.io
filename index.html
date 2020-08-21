@@ -43,6 +43,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- /Fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,400,400i,500,500i,700,700i,900" rel="stylesheet">
     <!-- //Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -517,7 +518,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <h3 class="tittle-w3 text-uppercase mb-lg-5 mb-3 text-center text-white">Contact Me Now</h3>
 
                 <div class="contact_grid_right">
-                    <form action="#" method="post">
+                    <form id="submit-form">
                         <div class="row contact_left_grid">
                             <div class="col-md-6 con-left" data-aos="fade-up">
                                 <div class="form-group">
@@ -963,6 +964,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //js -->
 
     <script src="js/bootstrap.js"></script>
+    <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbyqBZ0Wg1LWtuX0dLDHabUaiwd9y3LysWtE61Q9/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 
 </body>
 
